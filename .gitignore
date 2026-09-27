@@ -1,0 +1,30 @@
+# Bỏ qua tất cả các file theo mặc định
+*
+
+# Giữ lại các thư mục để git duyệt qua các thư mục con
+!*/
+!/**/
+
+# Cho phép file .gitignore
+!.gitignore
+
+# Chỉ giữ lại các file theo yêu cầu:
+# LaTeX
+!*.tex
+!**/*.tex
+
+# PDF
+!*.pdf
+!**/*.pdf
+
+# Python
+!*.py
+!**/*.py
+
+# Jupyter Notebook
+!*.ipynb
+!**/*.ipynb
+
+# Julia
+!*.jl
+!**/*.jl
