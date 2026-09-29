@@ -1,0 +1,154 @@
+\subsection{Cơ sở}
+Giả sử ta có n+1 số thực đôi một phân biệt $x_0<x_1< \dots< x_n$, tương ứng với chúng ta có $y_0, y_1, \dots< y_n$. Ta kì vọng tìm được hàm $f$ đi qua các điểm $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$, tức là 
+\begin{equation}
+	f(x_i)=y_i,\quad \text{với } i=0, 1, \dots, n.\\
+	\label{eq: ràng buộc nội suy}
+\end{equation}
+\begin{figure}[htbp]
+	\centering
+\begin{tikzpicture}[
+	x=1.25cm,
+	y=1.15cm,
+	every node/.style={font=\small}
+	]
+	
+	%------------------------------------------------
+	% Axes
+	%------------------------------------------------
+	\draw[thin] (0,-0.8) -- (0,4.5);
+	\draw[thin] (-0.15,0) -- (8.15,0);
+	
+	%------------------------------------------------
+	% Important coordinates
+	%------------------------------------------------
+	\coordinate (X0) at (1.0,0);
+	\coordinate (P0) at (1.0,0.55);
+	
+	\coordinate (X1) at (2.4,0);
+	\coordinate (P1) at (2.4,1.25);
+	
+	\coordinate (Xn) at (7.90,0);
+	\coordinate (Pn) at (7.90,3.25);
+	
+	%------------------------------------------------
+	% Main curve
+	%------------------------------------------------
+	\draw[thick]
+	(-0.75,0.55)
+	.. controls (-0.45,0.15) and (-0.20,0.00) .. (0,0)
+	.. controls (0.40,0.00) and (0.70,0.28) .. (1.0,0.55)
+	.. controls (1.45,0.95) and (1.95,1.25) .. (2.4,1.25)
+	.. controls (3.05,1.25) and (3.50,0.72) .. (4.05,0);
+	
+	% dashed continuation of left curve
+	\draw[dashed,thick]
+	(4.05,0)
+	.. controls (4.25,-0.28) and (4.45,-0.67) .. (4.65,-1.00);
+	
+	%------------------------------------------------
+	% Right straight branch
+	%------------------------------------------------
+	
+	% lower dashed continuation
+	\draw[dashed,thick]
+	(7.23,-1.05) -- (7.37,-0.55);
+	
+	% solid part
+	\draw[thick]
+	(7.40,-0.45) -- (7.90,3.25);
+	
+	% upper dashed continuation
+	\draw[dashed,thick]
+	(7.90,3.25) -- (8.03,4.20);
+	
+	%------------------------------------------------
+	% Points
+	%------------------------------------------------
+	\fill (P0) circle (1.8pt);
+	\fill (P1) circle (1.8pt);
+	\fill (Pn) circle (2pt);
+	
+	%------------------------------------------------
+	% Vertical dotted lines
+	%------------------------------------------------
+	\draw[dotted]
+	(X0) -- (P0);
+	
+	\draw[dotted]
+	(X1) -- (P1);
+	
+	\draw[dotted]
+	(Xn) -- (Pn);
+	
+	%------------------------------------------------
+	% Horizontal dotted lines
+	%------------------------------------------------
+	\draw[dotted]
+	(0,0.55) -- (P0);
+	
+	\draw[dotted]
+	(0,1.25) -- (P1);
+	
+	\draw[dotted]
+	(0,3.25) -- (Pn);
+	
+	%------------------------------------------------
+	% x-axis labels
+	%------------------------------------------------
+	\node[below] at (X0) {$x_0$};
+	\node[below] at (X1) {$x_1$};
+	
+	% x_n is slightly to the left of the vertical dotted line
+	\node[below left, xshift=3pt, yshift=-1pt] at (Xn) {$x_n$};
+	
+	\node[below] at (5.85,0) {$\cdots$};
+	
+	%------------------------------------------------
+	% f labels
+	%------------------------------------------------
+	\node[left] at (0,0.55) {$y_0$};
+	\node[left] at (0,1.25) {$y_1$};
+	
+	\node[left] at (0,2.00) {$\vdots$};
+	
+	\node[left] at (0,3.25) {$y_n$};
+	
+	%------------------------------------------------
+	% label p'_l
+	%------------------------------------------------
+	\node[above left, xshift=4pt, yshift=3pt]
+	at (8.00,4.05) {$f(x)$};
+\end{tikzpicture}
+	\caption{Các $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$ trên mặt phẳng cùng với hàm nội suy $f$}
+	\label{fig:visulize_noi_suy}
+\end{figure}
+
+\textbf{Quy ước tên gọi: }
+\begin{itemize}
+	\item Các điểm $x_0, x_1, \dots, x_n$ ta gọi là điểm dữ liệu, các giá trị tương ứng $y_0, y_1, \dots, y_n$ ta gọi là các dữ liệu.
+	\item Tập $S=\{(x_i, y_i): i=0, 1, \dots n \}$ được gọi là tập các điểm nội suy.
+	\item  Hàm $f(x)$ được gọi là hàm nội suy, trong trường hợp $f(x)$ là đa thức theo biến $x$, ta gọi $f(x)$ là đa thức nội suy.
+\end{itemize}
+\begin{menhde}{}{}
+Với $\mathbf{R}_n[x]$ là tập các đa thức hệ số thực có bậc không quá $n$, ta có:
+
+$P_n(x)=a_n x^n+ a_{n-1}x^{n-1}+\dots a_1 x+a_0\in \mathbf{R}_n[x]$ và thoả \ref{eq: ràng buộc nội suy} khi và chỉ khi nó hệ phương trình sau đươc thoả mãn
+\begin{equation}
+	\begin{bmatrix}
+		1 & x_0 & x_0^2 & \cdots & x_0^n \\
+		1 & x_1 & x_1^2 & \cdots & x_1^n \\
+		\vdots & \vdots & \vdots & \ddots & \vdots \\
+		1 & x_n & x_n^2 & \cdots & x_n^n 
+	\end{bmatrix}	
+\begin{bmatrix} 
+a_0\\ a_1 \\ \vdots \\ a_n
+\end{bmatrix}=
+\begin{bmatrix}
+y_0\\ y_1 \\ \vdots \\ y_n
+\end{bmatrix}
+\end{equation}
+\end{menhde}
+
+	
+
+

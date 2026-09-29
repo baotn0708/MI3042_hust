@@ -7,6 +7,8 @@
 \usepackage[vietnamese]{babel}
 \usepackage[T5]{fontenc}
 \usepackage{lmodern} % Font chữ Latin Modern sắc nét, chuẩn chuẩn cho Toán
+\usepackage{tikz}
+%\usetikzlibrary{calc}
 
 % ====================================================================
 % 2. CĂN CHỈNH TRANG IN (MARGINS)
@@ -75,6 +77,18 @@
     description font=\normalfont\itshape
 }{dl}
 
+% --- Môi trường mệnh đề ---
+\newtcbtheorem[number within=chapter]{menhde}{Mệnh đề}{
+	colback=subblue,
+	colframe=mainblue,
+	coltitle=white,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	arc=2mm,
+	left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+	separator sign={: },
+	description font=\normalfont\itshape
+}{md}
 % --- Môi trường Bổ đề (Lemma) ---
 \newtcbtheorem[number within=chapter]{bode}{Bổ đề}{
     colback=lightpurple,
@@ -254,9 +268,9 @@ Mọi ý kiến đóng góp xin gửi về địa chỉ email: \texttt{author@ex
 % --- Phần nội dung chính ---
 \mainmatter
 
-\chapter{Đại cương}
+\chapter{Nội suy đơn biến}
 \section{Lý thuyết}
-Nội dung phần lý thuyết...
+\input{chapter/chap1.tex}
 
 \section{Giải bài tập}
 
