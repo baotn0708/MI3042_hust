@@ -1,4 +1,4 @@
-\subsection{Cơ sở}
+\subsection{Tổng quan}
 Giả sử ta có n+1 số thực đôi một phân biệt $x_0<x_1< \dots< x_n$, tương ứng với chúng ta có $y_0, y_1, \dots< y_n$. Ta kì vọng tìm được hàm $f$ đi qua các điểm $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$, tức là 
 \begin{equation}
 	f(x_i)=y_i,\quad \text{với } i=0, 1, \dots, n.\\
@@ -125,14 +125,14 @@ Giả sử ta có n+1 số thực đôi một phân biệt $x_0<x_1< \dots< x_n$
 
 \textbf{Quy ước tên gọi: }
 \begin{itemize}
-	\item Các điểm $x_0, x_1, \dots, x_n$ ta gọi là điểm dữ liệu, các giá trị tương ứng $y_0, y_1, \dots, y_n$ ta gọi là các dữ liệu.
+	\item Các điểm $x_0, x_1, \dots, x_n$ ta gọi là điểm dữ liệu(hoặc mốc nội suy), các giá trị tương ứng $y_0, y_1, \dots, y_n$ ta gọi là các dữ liệu.
 	\item Tập $S=\{(x_i, y_i): i=0, 1, \dots n \}$ được gọi là tập các điểm nội suy.
 	\item  Hàm $f(x)$ được gọi là hàm nội suy, trong trường hợp $f(x)$ là đa thức theo biến $x$, ta gọi $f(x)$ là đa thức nội suy.
 \end{itemize}
 \begin{menhde}{}{}
 Với $\mathbf{R}_n[x]$ là tập các đa thức hệ số thực có bậc không quá $n$, ta có:
 
-$P_n(x)=a_n x^n+ a_{n-1}x^{n-1}+\dots a_1 x+a_0\in \mathbf{R}_n[x]$ và thoả \ref{eq: ràng buộc nội suy} khi và chỉ khi nó hệ phương trình sau đươc thoả mãn
+$P_n(x)=a_n x^n+ a_{n-1}x^{n-1}+\dots a_1 x+a_0\in \mathbf{R}_n[x]$ và thoả \eqref{eq: ràng buộc nội suy} khi và chỉ khi hệ phương trình sau đươc thoả mãn
 \begin{equation}
 	\begin{bmatrix}
 		1 & x_0 & x_0^2 & \cdots & x_0^n \\
@@ -149,6 +149,49 @@ y_0\\ y_1 \\ \vdots \\ y_n
 \end{equation}
 \end{menhde}
 
+Rõ ràng rằng, phép nội suy nói chung và trường hợp nội suy bằng đa thức nói riêng, sai số là điều không thể tránh. Ta có định lý sau.
+\begin{dinhly}{CT sai số}{ct-sai-so}
+Cho $f\in C^{n+1}([a,b])$ và $P_n$ là đa thức nội suy của $f$ tại các nút đôi một phân biệt $x_0,x_1,\dots,x_n\in[a,b]$. Khi đó, với mỗi $x\in[a,b]$, tồn tại $\xi=\xi(x)\in I_x=(\min(x_0, x_1,\dots, x_n), \max(x_0, x_1, \dots, x_n)) \subseteq[a,b]$ sao cho
+\begin{equation}
+	f(x)-P_n(x)=\frac{f^{(n+1)}(\xi_x)}{(n+1)!}\prod_{i=0}^{n}(x-x_i).
+	\label{eq:sai-so-noi-suy}
+\end{equation}
+\end{dinhly}
+\begin{chungminh}
+	\textbf{Trường hợp 1:} $x$ trùng với một trong các mốc nội suy. (Định lý hiển nhiên đúng)
 	
+	\noindent \textbf{Trường hợp 2:} $x \neq x_i, \quad \forall i=0, 1, \dots, n$.
+	
+	Cố định giá trị $x\in [a, b]$. Xét hàm 
+	\[
+	g(t)=f(t)-P_n(t)-K \omega _{n+1}(t), 
+	\]
+	với $K=\displaystyle \frac{f(x)-P_n(x)}{\omega_{n+1}(x)}, \omega_{n+1}(x) = \prod_{i=0}^n (x - x_i)$.
+	
+	Ta có:
+	\begin{itemize}
+		\item Với $\forall i =0, 1, \dots n$, $g(x_i)=f(x_i)-P_n(x_i)-K \omega_{n+1}(x_i)=0-K 0 =0$.
+		\item $g(x)=f(x)-P_n(x)-\displaystyle \frac{f(x)-P_n(x)}{\omega_{n+1}(x)} \omega_{n+1}(x)=0$
+	\end{itemize}
+	Do đó, $g(t)$ có ít nhất $n+2$ nghiệm phân biệt trên đoạn đóng $\overline{I_x}$.
+	
+	Mặt khác, dễ dàng chứng minh được $g$ liên tục trên $\overline{I_x}$ và khả vi trên $I_x$. Áp dụng định lý Rolle ta được:
+	\begin{itemize}
+		\item $g'(t)=0$ có ít nhất $n+1$ nghiệm phân biệt trong $I_x$.
+		\item $g''(t)=0$ có ít nhất $n$ nghiệm phân biệt trong $I_x$.
+		\item ...
+		\item Quy nạp ta được $g^{(n+1)}(t)=0$ có ít nhất $1$ nghiệm trong $I_x$.
+	\end{itemize}
+	
+	Gọi $\xi$ là 1 nghiệm của $g^{(n+1)}(t)=0$. Khi đó, 
+	\[
+	g^{(n+1)}(\xi) = f^{(n+1)}(\xi) - K (n+1)! =0 \longrightarrow K = \frac{f^{(n+1)}(\xi)}{(n+1)!}.
+	\]
+	Như vậy, 
+	\[
+	\frac{f(x)-P_n(x)}{\omega_{n+1}(x)} = \frac{f^{(n+1)}(\xi)}{(n+1)!}.
+	\]
+	Nhân 2 vế với $\omega_{n+1}(x)$ ta được điều cần chứng minh.
+\end{chungminh}
 
 

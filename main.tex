@@ -169,9 +169,14 @@
 
 % --- Môi trường Lời giải / Chứng minh ---
 \newenvironment{loigiai}{%
-    \par\noindent\textbf{\textit{\color{mainblue}Lời giải:}}\ \ignorespaces%
+    \par\noindent\textbf{\textit{\color{mainblue}Lời giải:}}\ \ignorespaces \\ 
 }{%
-    \hfill$\blacksquare$\par\medskip%
+    
+}
+\newenvironment{chungminh}{%
+	\par\noindent\textbf{\textit{\color{mainblue}Chứng minh:}}\ \ignorespaces \\
+}{%
+	\hfill$\blacksquare$\par\medskip%
 }
 
 % --- Môi trường Bài tập dạng văn bản (Tự động đánh số, không bị thụt lề) ---
@@ -269,10 +274,10 @@ Mọi ý kiến đóng góp xin gửi về địa chỉ email: \texttt{author@ex
 \mainmatter
 
 \chapter{Nội suy đơn biến}
-\section{Lý thuyết}
+\section{Cơ sở nội suy}
 \input{chapter/chap1.tex}
 
-\section{Giải bài tập}
+\chapter{Giải bài tập}
 
 \begin{bt}
 Tính định thức Vandermonde trong định lý về sự tồn tại duy nhất nghiệm của đa thức nội suy.
