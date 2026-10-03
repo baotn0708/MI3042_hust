@@ -1,0 +1,314 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+% ====================================================================
+% 1. CẤU HÌNH TIẾNG VIỆT & FONT CHỮ
+% ====================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage[T5]{fontenc}
+\usepackage{lmodern} % Font chữ Latin Modern sắc nét, chuẩn chuẩn cho Toán
+\usepackage{tikz}
+%\usetikzlibrary{calc}
+
+% ====================================================================
+% 2. CĂN CHỈNH TRANG IN (MARGINS)
+% ====================================================================
+\usepackage[a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=3cm,
+    right=2cm,
+    headheight=16pt
+]{geometry}
+
+% ====================================================================
+% 3. CÁC GÓI TOÁN HỌC CẦN THIẾT
+% ====================================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
+\usepackage{bm}       % In đậm ký hiệu toán: \bm{x}, \bm{\alpha}
+\usepackage{cancel}   % Gạch bỏ biểu thức triệt tiêu: \cancel{x}
+
+% ====================================================================
+% 4. MÀU SẮC, ĐỒ HỌA & HỘP ĐỊNH LÝ (TCOLORBOX)
+% ====================================================================
+\usepackage{xcolor}
+% Bảng màu chuyên nghiệp
+\definecolor{mainblue}{HTML}{1A5276}
+\definecolor{subblue}{HTML}{EBF5FB}
+\definecolor{darkgreen}{HTML}{196F3D}
+\definecolor{lightgreen}{HTML}{EAFAF1}
+\definecolor{darkorange}{HTML}{B9770E}
+\definecolor{lightorange}{HTML}{FEF9E7}
+\definecolor{darkred}{HTML}{922B21}
+\definecolor{lightred}{HTML}{FDEDEC}
+\definecolor{darkpurple}{HTML}{5B2C6F}
+\definecolor{lightpurple}{HTML}{F4ECF7}
+\definecolor{graybox}{HTML}{F8F9F9}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,quotes,intersections}
+
+\usepackage[theorems]{tcolorbox}
+
+% --- Môi trường Định nghĩa (Definition) ---
+\newtcbtheorem[number within=chapter]{dinhnghia}{Định nghĩa}{
+    colback=lightgreen,
+    colframe=darkgreen,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    separator sign={: },
+    description font=\normalfont\itshape
+}{dn}
+
+% --- Môi trường Định lý (Theorem) ---
+\newtcbtheorem[number within=chapter]{dinhly}{Định lý}{
+    colback=subblue,
+    colframe=mainblue,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    separator sign={: },
+    description font=\normalfont\itshape
+}{dl}
+
+% --- Môi trường mệnh đề ---
+\newtcbtheorem[number within=chapter]{menhde}{Mệnh đề}{
+	colback=subblue,
+	colframe=mainblue,
+	coltitle=white,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	arc=2mm,
+	left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+	separator sign={: },
+	description font=\normalfont\itshape
+}{md}
+% --- Môi trường Bổ đề (Lemma) ---
+\newtcbtheorem[number within=chapter]{bode}{Bổ đề}{
+    colback=lightpurple,
+    colframe=darkpurple,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    separator sign={: },
+    description font=\normalfont\itshape
+}{bd}
+
+% --- Môi trường Hệ quả (Corollary) ---
+\newtcbtheorem[number within=chapter]{hequa}{Hệ quả}{
+    colback=subblue,
+    colframe=mainblue!80!black,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    separator sign={: },
+    description font=\normalfont\itshape
+}{hq}
+
+% --- Môi trường Ví dụ (Example) ---
+\newtcbtheorem[number within=chapter]{vidu}{Ví dụ}{
+    colback=lightorange,
+    colframe=darkorange,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    separator sign={: },
+    description font=\normalfont\itshape
+}{vd}
+
+% --- Môi trường Bài tập (Exercise) ---
+\newtcbtheorem[number within=chapter]{baitap}{Bài tập}{
+    colback=lightred,
+    colframe=darkred,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    separator sign={: },
+    description font=\normalfont\itshape
+}{bt}
+\newtcbtheorem[number within=chapter]{baitapbn}{Bài tập*}{
+    colback=lightred,
+    colframe=darkred,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    separator sign={: },
+    description font=\normalfont\itshape
+}{btns}
+
+% --- Hộp Nhận xét / Chú ý (Remark / Note) ---
+\newtcolorbox{nhanxet}{
+    colback=graybox,
+    colframe=darkorange,
+    boxrule=0.6pt,
+    leftrule=3.5pt,
+    arc=1.5mm,
+    fonttitle=\bfseries\color{darkorange},
+    title={Nhận xét / Chú ý},
+    coltitle=darkorange,
+    colbacktitle=graybox,
+    left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+    toptitle=1.5mm, bottomtitle=1.5mm
+}
+
+% --- Môi trường Lời giải / Chứng minh ---
+\newenvironment{loigiai}{%
+    \par\noindent\textbf{\textit{\color{mainblue}Lời giải:}}\ \ignorespaces \\ 
+}{%
+    
+}
+\newenvironment{chungminh}{%
+	\par\noindent\textbf{\textit{\color{mainblue}Chứng minh:}}\ \ignorespaces \\
+}{%
+	\hfill$\blacksquare$\par\medskip%
+}
+
+% --- Môi trường Bài tập dạng văn bản (Tự động đánh số, không bị thụt lề) ---
+\newcounter{btcount}[chapter]
+\renewcommand{\thebtcount}{\arabic{btcount}}
+\newenvironment{bt}[1][]{%
+    \refstepcounter{btcount}%
+    \par\vspace{0.35cm}\noindent%
+    \textbf{\color{darkred}Bài tập \thebtcount\ifstrempty{#1}{}{ (#1)}:}\ %
+    \ignorespaces%
+}{%
+    \par\vspace{0.25cm}%
+}
+
+% ====================================================================
+% 5. HEADER & FOOTER
+% ====================================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ====================================================================
+% 6. HYPERREF (LIÊN KẾT & BOOKMARKS)
+% ====================================================================
+\usepackage{hyperref}
+\usepackage{bookmark}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mainblue,
+    citecolor=darkgreen,
+    urlcolor=darkpurple,
+    bookmarksnumbered=true,
+    plainpages=false,
+    pdfpagelabels=true,
+    pdfstartview={FitH}
+}
+
+% ====================================================================
+% 7. THÔNG TIN BÌA TÀI LIỆU
+% ====================================================================
+
+\begin{document}
+\begin{titlepage}
+\centering
+\vspace*{3cm}
+{\Huge\bfseries\color{mainblue} PHƯƠNG PHÁP SỐ\par}
+\vspace{1cm}
+{\LARGE Bản nháp lời giải bài tập\par}
+\vspace{2cm}
+{\Large Trần Văn Tèo\par}
+\vfill
+{\large MI3042 -- Hà Nội, 2026\par}
+\end{titlepage}
+\frontmatter
+\chapter*{Tình trạng bản thảo}
+Đây là phần lời giải đã có, được tách khỏi bản lý thuyết. Chứng minh Vandermonde dưới đây còn đang viết dở. Đợt biên soạn hiện tại chỉ phát triển lý thuyết trong \texttt{main.tex}; bản lời giải này được giữ để hiệu đính và phát triển sau.
+\mainmatter
+\chapter{Xấp xỉ hàm số}
+
+
+\begin{bt}
+Tính định thức Vandermonde trong định lý về sự tồn tại duy nhất nghiệm của đa thức nội suy.
+\end{bt}
+
+\begin{loigiai}
+Định thức Vandermonde cấp $n$ ứng với các số $x_1, x_2, \dots, x_n$ có dạng:
+\[
+    V_n = \begin{vmatrix}
+        1 & x_1 & x_1^2 & \cdots & x_1^{n-1} \\
+        1 & x_2 & x_2^2 & \cdots & x_2^{n-1} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & x_n & x_n^2 & \cdots & x_n^{n-1}
+    \end{vmatrix}.
+\]
+Khi $n=2$, ta có:
+\[
+V_2 = \begin{vmatrix}
+    1 & x_1 \\
+    1 & x_2
+\end{vmatrix} = x_2 - x_1.
+\]
+Khi $n=3$, ta có:
+\[
+\begin{aligned}
+        V_3 = \begin{vmatrix}
+        1 & x_1 & x_1^2 \\
+        1 & x_2 & x_2^2 \\
+        1 & x_3 & x_3^2
+    \end{vmatrix} &= 1 (x_2 x_3^2 - x_3 x_2^2) - 1 (x_1 x_3^2 - x_3 x_1^2) + 1 (x_1 x_2^2 - x_2 x_1^2) \\
+    &= x_2^2(-x_3+x_1) + x_2(x_3^2-x_1^2)  +(-x_1 x_3^2 + x_3 x_1^2) \\
+    &= (x_1-x_3)(x_2^2-x_2(x_1+x_3) + x_1 x_3) \\
+    &= (x_1-x_3)(x_2-x_1)(x_2-x_3).
+\end{aligned}
+\]
+Giả sử đẳng thức $V_n = \prod_{1 \leq i < j \leq n} (x_j - x_i)$ đúng tới cho $n = k-1$. Ta sẽ chứng minh rằng đẳng thức này cũng đúng cho $n = k$.
+
+\[
+\begin{aligned}
+    V_k &= \begin{vmatrix}
+    1 & x_1 & x_1^2 & \cdots & x_1^{k-1} \\
+    1 & x_2 & x_2^2 & \cdots & x_2^{k-1} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & x_k & x_k^2 & \cdots & x_k^{k-1}
+\end{vmatrix} \\&= \begin{vmatrix}
+    1 & x_1 & x_1^2 & \cdots & x_1^{k-1}\\
+    0 & x_2-x_1 & x_2^2-x_1^2 & \cdots & x_2^{k-1}-x_1^{k-1} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & x_k-x_1 & x_k^2-x_1^2 & \cdots & x_k^{k-1}-x_1^{k-1}
+\end{vmatrix} \\ 
+&= \begin{vmatrix}
+    x_2-x_1 & x_2^2-x_1^2 & \cdots & x_2^{k-1}-x_1^{k-1} \\
+    x_3-x_1 & x_3^2-x_1^2 & \cdots & x_3^{k-1}-x_1^{k-1} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    x_k-x_1 & x_k^2-x_1^2 & \cdots & x_k^{k-1}-x_1^{k-1}
+\end{vmatrix} \\
+& = (x_2-x_1)(x_3-x_1)\cdots(x_k-x_1)\begin{vmatrix}
+    1 & x_2+x_1 & \cdots & \sum_{j=0}^{k-2} x_2^j x_1^{k-2-j} \\
+    1 & x_3+x_1 & \cdots & \sum_{j=0}^{k-2} x_3^j x_1^{k-2-j} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    1 & x_k+x_1 & \cdots & \sum_{j=0}^{k-2} x_k^j x_1^{k-2-j}
+\end{vmatrix}
+\end{aligned}
+\]
+
+\end{loigiai}
+
+
+
+
+\end{document}
